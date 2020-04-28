@@ -1,0 +1,18 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: robolumber
+    environment:
+      - APPLICATION_PORT=3310
+      - DATABASE_URL=postgres://leonid@host.docker.internal:5432/robox_development
+      - DATABASE_SCHEMA=public
+      - DATABASE_SSL=false
+      - FOREST_AUTH_SECRET=d0cfdfdd26851153f507fd2ecbb6941c858082ee02471e426b14594b566b64d623fd9f382d9552dfbe31ba8a88affb7f
+      - FOREST_ENV_SECRET=1d2edf95131ec759eaa89f52b1029adb103e1120238886ee74200b25d51ab54e
+    ports:
+      - "3310:3310"
+    volumes:
+      - ./:/usr/src/app
